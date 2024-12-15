@@ -56,7 +56,7 @@ repository ini adalah repository setup proJect medpoint sistem untuk bagian back
 ### 1. Clone the repository link
 
 ```bash
-git clone https://github.com/deniPamungkas/featured-e-commerce.git
+git clone https://github.com/deniPamungkas/BE-IP-medpoint.git
 ```
 
 ### 2. move to project folder
