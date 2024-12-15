@@ -46,3 +46,29 @@ repository ini adalah repository setup proJect medpoint sistem untuk bagian back
 - │   └── state      # Bytecode containing raiden state
 - ├── go.sum
 - └── go.mod
+
+## How to Run the project in your computer 💻
+
+### Requirements
+- install raiden framework -> https://raiden.sev-2.com/docs/installation
+- install golang -> https://go.dev/doc/install
+
+### 1. Clone the repository link
+
+```bash
+git clone https://github.com/deniPamungkas/featured-e-commerce.git
+```
+
+### 2. move to project folder
+
+```bash
+cd featured-e-commerce
+```
+
+### 3. run backend 
+```bash
+cd server
+```
+```bash
+npm install
+```
