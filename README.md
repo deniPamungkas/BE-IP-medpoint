@@ -53,18 +53,6 @@ repository ini adalah repository setup proJect medpoint sistem untuk bagian back
 - install raiden framework -> https://raiden.sev-2.com/docs/installation
 - install golang -> https://go.dev/doc/install
 
-### 1. Clone the repository link
-
-```bash
-git clone https://github.com/deniPamungkas/BE-IP-medpoint.git
-```
-
-### 2. move to project folder
-
-```bash
-cd featured-e-commerce
-```
-
 ### 3. run backend 
 ```bash
 cd server
