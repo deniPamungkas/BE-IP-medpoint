@@ -4,11 +4,19 @@ package bootstrap
 import (
 	"github.com/sev-2/raiden"
 	"ipmedpointsistem/internal/controllers"
+	"ipmedpointsistem/internal/models"
 	"github.com/valyala/fasthttp"
 )
 
 func RegisterRoute(server *raiden.Server) {
 	server.RegisterRoute([]*raiden.Route{
+		{
+			Type:       raiden.RouteTypeCustom,
+			Path:       "/doctor",
+			Methods:    []string{fasthttp.MethodGet},
+			Controller: &controllers.DoctorController{},
+			Model:      models.Doctor{},
+		},
 		{
 			Type:       raiden.RouteTypeCustom,
 			Path:       "/hello/{name}",
