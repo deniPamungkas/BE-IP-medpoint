@@ -1,8 +1,8 @@
 package models
 
 import (
-	"time"
 	"github.com/google/uuid"
+	"time"
 	"github.com/sev-2/raiden/pkg/db"
 )
 

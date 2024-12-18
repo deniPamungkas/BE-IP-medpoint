@@ -19,6 +19,6 @@ type Specialist struct {
 	Acl string `json:"-" read:"" write:""`
 
 	// Relations
-	Users []*Users `json:"users,omitempty" join:"joinType:manyToMany;through:doctor;sourcePrimaryKey:id;sourceForeignKey:specialist_id;targetPrimaryKey:id;targetForeign:specialist_id"`
 	DoctorSpecialists []*Doctor `json:"doctor_specialists,omitempty" join:"joinType:hasMany;primaryKey:id;foreignKey:specialist_id"`
+	Users []*Users `json:"users,omitempty" join:"joinType:manyToMany;through:doctor;sourcePrimaryKey:id;sourceForeignKey:specialist_id;targetPrimaryKey:id;targetForeign:specialist_id"`
 }

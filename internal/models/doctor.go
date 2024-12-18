@@ -1,14 +1,14 @@
 package models
 
 import (
-	"time"
 	"github.com/google/uuid"
+	"time"
 	"github.com/sev-2/raiden/pkg/db"
 )
 
 type Doctor struct {
 	db.ModelBase
-	Id uuid.UUID `json:"id,omitempty" column:"name:id;type:uuid;primaryKey;nullable:false;default:auth.uid()"`
+	Id uuid.UUID `json:"id,omitempty" column:"name:id;type:uuid;primaryKey;nullable:false;default:gen_random_uuid()"`
 	CreatedAt time.Time `json:"created_at,omitempty" column:"name:created_at;type:timestampz;nullable:false;default:now()"`
 	UserId uuid.UUID `json:"user_id,omitempty" column:"name:user_id;type:uuid;nullable:false;default:gen_random_uuid()"`
 	Name string `json:"name,omitempty" column:"name:name;type:text;nullable:false"`

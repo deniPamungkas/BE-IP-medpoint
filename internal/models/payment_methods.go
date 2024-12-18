@@ -19,6 +19,6 @@ type PaymentMethods struct {
 	Acl string `json:"-" read:"" write:""`
 
 	// Relations
-	Payments []*Payments `json:"payments,omitempty" join:"joinType:hasMany;primaryKey:id;foreignKey:payment_method_id"`
 	Reservations []*Reservations `json:"reservations,omitempty" join:"joinType:manyToMany;through:payments;sourcePrimaryKey:id;sourceForeignKey:payment_method_id;targetPrimaryKey:id;targetForeign:payment_method_id"`
+	Payments []*Payments `json:"payments,omitempty" join:"joinType:hasMany;primaryKey:id;foreignKey:payment_method_id"`
 }
