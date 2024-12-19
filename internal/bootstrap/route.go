@@ -12,6 +12,24 @@ func RegisterRoute(server *raiden.Server) {
 	server.RegisterRoute([]*raiden.Route{
 		{
 			Type:       raiden.RouteTypeCustom,
+			Path:       "/auth/v1/sign-up",
+			Methods:    []string{fasthttp.MethodPost},
+			Controller: &controllers.SignUpController{},
+		},
+		{
+			Type:       raiden.RouteTypeCustom,
+			Path:       "/auth/v1/login",
+			Methods:    []string{fasthttp.MethodPost},
+			Controller: &controllers.LoginController{},
+		},
+		{
+			Type:       raiden.RouteTypeCustom,
+			Path:       "/auth/v1/logout",
+			Methods:    []string{fasthttp.MethodPost},
+			Controller: &controllers.LogoutController{},
+		},
+		{
+			Type:       raiden.RouteTypeCustom,
 			Path:       "/doctor/{id}",
 			Methods:    []string{fasthttp.MethodDelete},
 			Controller: &controllers.DeleteDoctorController{},

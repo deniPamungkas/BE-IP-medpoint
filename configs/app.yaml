@@ -10,7 +10,7 @@ SUPABASE_API_URL: https://api.supabase.com
 SUPABASE_API_BASE_PATH: 
 SUPABASE_PUBLIC_URL: https://gamitsljjtdiitmhxzuz.supabase.co
 
-SERVER_HOST: 0.0.0.0
+SERVER_HOST: 127.0.0.1
 SERVER_PORT: 8002
 
 ENVIRONMENT: development
