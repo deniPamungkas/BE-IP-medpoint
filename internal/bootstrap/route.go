@@ -12,6 +12,12 @@ func RegisterRoute(server *raiden.Server) {
 	server.RegisterRoute([]*raiden.Route{
 		{
 			Type:       raiden.RouteTypeCustom,
+			Path:       "/auth/v1/logout",
+			Methods:    []string{fasthttp.MethodPost},
+			Controller: &controllers.LogoutController{},
+		},
+		{
+			Type:       raiden.RouteTypeCustom,
 			Path:       "/auth/v1/sign-up",
 			Methods:    []string{fasthttp.MethodPost},
 			Controller: &controllers.SignUpController{},
@@ -21,19 +27,6 @@ func RegisterRoute(server *raiden.Server) {
 			Path:       "/auth/v1/login",
 			Methods:    []string{fasthttp.MethodPost},
 			Controller: &controllers.LoginController{},
-		},
-		{
-			Type:       raiden.RouteTypeCustom,
-			Path:       "/auth/v1/logout",
-			Methods:    []string{fasthttp.MethodPost},
-			Controller: &controllers.LogoutController{},
-		},
-		{
-			Type:       raiden.RouteTypeCustom,
-			Path:       "/doctor/{id}",
-			Methods:    []string{fasthttp.MethodDelete},
-			Controller: &controllers.DeleteDoctorController{},
-			Model:      models.Doctor{},
 		},
 		{
 			Type:       raiden.RouteTypeCustom,
@@ -51,8 +44,15 @@ func RegisterRoute(server *raiden.Server) {
 		},
 		{
 			Type:       raiden.RouteTypeCustom,
+			Path:       "/doctor/{id}",
+			Methods:    []string{fasthttp.MethodDelete},
+			Controller: &controllers.DeleteDoctorController{},
+			Model:      models.Doctor{},
+		},
+		{
+			Type:       raiden.RouteTypeCustom,
 			Path:       "/schedule",
-			Methods:    []string{fasthttp.MethodGet},
+			Methods:    []string{fasthttp.MethodGet, fasthttp.MethodPost},
 			Controller: &controllers.ScheduleController{},
 			Model:      models.DoctorSchedule{},
 		},

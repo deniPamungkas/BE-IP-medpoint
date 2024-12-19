@@ -3,16 +3,17 @@ package controllers
 import (
 	"ipmedpointsistem/internal/models"
 
+	"github.com/google/uuid"
 	"github.com/sev-2/raiden"
 	"github.com/sev-2/raiden/pkg/db"
 )
 
 type ScheduleRequest struct {
 	// Id            uuid.UUID `json:"id"`
-	// User_Id       uuid.UUID `json:"user_id"`
-	// Name          string    `json:"name"`
-	// Gender        string    `json:"gender"`
-	// Specialist_Id uuid.UUID `json:"specialist_id"`
+	DoctorId     uuid.UUID `json:"doctor_id"`
+	AvailableDay string    `json:"available_day"`
+	StartTime    string    `json:"start_time"`
+	EndTime      string    `json:"end_time"`
 }
 
 // type DeleteDoctorRequest struct {
@@ -22,11 +23,11 @@ type ScheduleRequest struct {
 // type AddDoctorController struct {
 // }
 
-// type DoctorResponse struct {
-// 	Success bool `json:"success"`
-// 	Data    any  `json:"data"`
-// 	Message string
-// }
+type ScheduleResponse struct {
+	Success bool `json:"success"`
+	Data    any  `json:"data"`
+	Message string
+}
 
 // type DeleteDoctorController struct {
 // 	raiden.ControllerBase
@@ -46,7 +47,7 @@ type ScheduleController struct {
 	raiden.ControllerBase
 	Http    string `path:"/schedule" type:"custom"`
 	Model   models.DoctorSchedule
-	Payload *DoctorRequest
+	Payload *ScheduleRequest
 }
 
 func (c *ScheduleController) Get(ctx raiden.Context) error {
@@ -57,7 +58,7 @@ func (c *ScheduleController) Get(ctx raiden.Context) error {
 		return ctx.SendError("error")
 	}
 
-	response := DoctorResponse{
+	response := ScheduleResponse{
 		Success: true,
 		Data:    string(data),
 	}
@@ -65,23 +66,23 @@ func (c *ScheduleController) Get(ctx raiden.Context) error {
 	return ctx.SendJson(response)
 }
 
-// func (c *ScheduleController) Post(ctx raiden.Context) error {
+func (c *ScheduleController) Post(ctx raiden.Context) error {
 
-// 	payload := models.Doctor{UserId: c.Payload.User_Id, Name: c.Payload.Name, Gender: c.Payload.Gender, SpecialistId: c.Payload.Specialist_Id}
+	payload := models.DoctorSchedule{DoctorId: c.Payload.DoctorId, AvailableDay: c.Payload.AvailableDay, StartTime: c.Payload.StartTime, EndTime: c.Payload.EndTime}
 
-// 	data, err := db.NewQuery(ctx).From(models.Doctor{}).Insert(payload)
+	data, err := db.NewQuery(ctx).From(models.DoctorSchedule{}).Insert(payload)
 
-// 	if err != nil {
-// 		return ctx.SendError("error")
-// 	}
+	if err != nil {
+		return ctx.SendError("error")
+	}
 
-// 	response := DoctorResponse{
-// 		Success: true,
-// 		Data:    string(data),
-// 	}
+	response := ScheduleResponse{
+		Success: true,
+		Data:    string(data),
+	}
 
-// 	return ctx.SendJson(response)
-// }
+	return ctx.SendJson(response)
+}
 
 // func (c *ScheduleController) Patch(ctx raiden.Context) error {
 
@@ -93,7 +94,7 @@ func (c *ScheduleController) Get(ctx raiden.Context) error {
 // 		return ctx.SendError("error")
 // 	}
 
-// 	response := DoctorResponse{
+// 	response := ScheduleResponse{
 // 		Success: true,
 // 		Data:    string(data),
 // 	}
@@ -109,7 +110,7 @@ func (c *ScheduleController) Get(ctx raiden.Context) error {
 // 		return ctx.SendError("error")
 // 	}
 
-// 	response := DoctorResponse{
+// 	response := ScheduleResponse{
 // 		Success: true,
 // 		Data:    string(data),
 // 		Message: string(c.Payload.Id),
@@ -125,7 +126,7 @@ func (c *ScheduleController) Get(ctx raiden.Context) error {
 // 		return ctx.SendError("error")
 // 	}
 
-// 	response := DoctorResponse{
+// 	response := ScheduleResponse{
 // 		Success: true,
 // 		Data:    string(data),
 // 	}
